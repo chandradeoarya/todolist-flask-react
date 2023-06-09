@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 
+import { API_URL } from '../config';
+
 function AddTodo({ todos, setTodos }) {
   const [title, setTitle] = useState("");
 
@@ -8,7 +10,7 @@ function AddTodo({ todos, setTodos }) {
     e.preventDefault();
 
     axios
-      .post("http://localhost:80/todos", { title })
+      .post(`${API_URL}/todos`, { title })
       .then((response) => {
         setTodos([...todos, response.data.newly_added_task]);
         setTitle("");

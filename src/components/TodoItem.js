@@ -1,10 +1,12 @@
 import React from "react";
 import axios from "axios";
 
+import { API_URL } from '../config';
+
 function TodoItem({ todo, todos, setTodos }) {
   const handleDelete = () => {
     axios
-      .delete(`http://localhost:80/todos/${todo.task_id}`)
+      .delete(`${API_URL}/todos/${todo.task_id}`)
       .then(() => {
         setTodos(todos.filter((item) => item.task_id !== todo.task_id));
       })
