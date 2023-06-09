@@ -1,0 +1,13 @@
+FROM node:14-alpine
+
+ENV REACT_APP_API_URL=
+
+COPY package*.json ./
+
+COPY . .
+
+RUN npm install
+
+EXPOSE 3000
+
+CMD ["npm", "start"]

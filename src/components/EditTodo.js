@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 
+import { API_URL } from '../config';
+
 function EditTodo({ todo, setEditing }) {
   const [title, setTitle] = useState(todo.title);
   const [description, setDescription] = useState(todo.description);
@@ -9,7 +11,7 @@ function EditTodo({ todo, setEditing }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .put(`http://localhost:80/todos/${todo.task_id}`, {
+      .put(`${API_URL}/todos/${todo.task_id}`, {
         title,
         description,
         is_done: isDone ? 1 : 0

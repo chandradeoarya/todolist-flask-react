@@ -4,12 +4,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import TodoList from "./components/TodoList";
 import AddTodo from "./components/AddTodo";
 
+import { API_URL } from './config';
+
 function App() {
   const [todos, setTodos] = useState([]);
 
   useEffect(() => {
     axios
-      .get("http://localhost:80/todos")
+      .get(`${API_URL}/todos`)
       .then((response) => {
         setTodos(response.data.tasks);
       })
